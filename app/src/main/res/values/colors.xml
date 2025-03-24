@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_primary">#137851</color>
+    <color name="dark_primary_dark">#000000</color>
+    <color name="dark_accent">#137851</color>
+    <color name="dark_text_color">#FFFFFF</color>
+    <color name="dark_secondary_text_color">#A9A9A9</color>
+    <color name="dark_window_background">#1B1B1B</color>
+    <color name="dark_background">#1E1E1E</color>
+    <color name="dark_control_normal">#424242</color>
+    <color name="dark_control_activated">#137851</color>
+    <color name="dark_status_bar_color">#000000</color>
+    <color name="dark_navigation_bar_color">#000000</color>
+    <color name="dark_button_text_color">#FFFFFF</color>
+    <color name="dark_button_color">#1976D2</color>
+
+    <color name="bottom_nav_icon_color">#6200EE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="blue">#2196F3</color>
+    <color name="gray">#808080</color>
+    <color name="green">#4CAF50</color>
+    <color name="dark_gray">#757575</color>
+    <color name="icon_tint">#FFFFFF</color>
+    <color name="light_text">#000000</color>
+    <color name="text_light">#FFFFFF</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="button_color">#1976D2</color>
+
+    <color name="bottom_nav_bg">#000000</color>
+    <color name="bottom_nav_icon_tint">#FFFFFF</color>
+    <color name="bottom_nav_text_color">#BDBDBD</color>
+</resources>

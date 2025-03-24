@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Цвет границы, когда поле в фокусе -->
+    <item android:color="@color/dark_accent" android:state_focused="true"/>
+    <!-- Цвет границы по умолчанию (когда поле не в фокусе) -->
+    <item android:color="@color/dark_control_normal"/>
+</selector>

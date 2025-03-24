@@ -1,0 +1,164 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Blesbook -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Blesbook"
+            android:textColor="@color/dark_accent"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <!-- Шапка -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Имя пользователя -->
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Имя Фамилия"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical|start"
+                android:textColor="@color/dark_text_color" />
+
+            <!-- Настройки -->
+            <ImageButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/icon_tint"
+                android:background="@null"
+                android:contentDescription="Настройки"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+            <!-- Информация о книгах -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <!-- Прочитано -->
+                <TextView
+                    android:id="@+id/tvBooksRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Прочитано книг: 0"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark_text_color" />
+
+                <!-- Wishlist -->
+                <TextView
+                    android:id="@+id/tvBooksToRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Хочу прочитать: 0"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark_text_color"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Контейнер для кнопок -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="1"
+                android:layout_marginTop="8dp">
+
+                <!-- Найти цитату -->
+                <Button
+                    android:id="@+id/btnSearchByQuote"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:text="Найти цитату"
+                    android:textColor="@color/dark_button_text_color"
+                    android:backgroundTint="@color/dark_accent"
+                    app:cornerRadius="8dp"
+                    android:textAllCaps="false"
+                    android:padding="12dp"
+                    android:layout_marginEnd="6dp"/>
+
+                <!-- Найти книгу -->
+                <Button
+                    android:id="@+id/btnSearchByAuthorOrTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:text="Найти книгу"
+                    android:textColor="@color/dark_button_text_color"
+                    android:backgroundTint="@color/dark_accent"
+                    app:cornerRadius="8dp"
+                    android:textAllCaps="false"
+                    android:padding="12dp"
+                    android:layout_marginStart="6dp"/>
+
+            </GridLayout>
+
+        <!-- Новости -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Новости"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_text_color"
+            android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <!-- Лента новостей -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="250dp"
+            android:fillViewport="true"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNewsFeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Нижняя панель навигации -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bottom_nav_bg"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

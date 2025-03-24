@@ -1,0 +1,93 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?attr/selectableItemBackground"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp"
+    android:backgroundTint="@color/white">
+
+    <!-- Номер книги -->
+    <TextView
+        android:id="@+id/tvBookNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="№"
+        android:textSize="16sp"
+        android:textColor="@color/dark_accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Название книги -->
+    <TextView
+        android:id="@+id/tvBookTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Название книги"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_text_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBookNumber"
+        android:layout_marginStart="8dp" />
+
+    <!-- Автор -->
+    <TextView
+        android:id="@+id/tvBookAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Автор"
+        android:textSize="16sp"
+        android:textColor="@color/dark_text_color"
+        app:layout_constraintTop_toBottomOf="@id/tvBookTitle"
+        app:layout_constraintStart_toStartOf="@id/tvBookTitle"
+        android:layout_marginTop="4dp" />
+
+    <!-- Страна и год -->
+    <TextView
+        android:id="@+id/tvBookDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Страна, Год"
+        android:textSize="14sp"
+        android:textColor="@color/dark_secondary_text_color"
+        app:layout_constraintTop_toBottomOf="@id/tvBookAuthor"
+        app:layout_constraintStart_toStartOf="@id/tvBookAuthor"
+        android:layout_marginTop="4dp" />
+
+    <!-- Количество цитат-->
+    <TextView
+        android:id="@+id/tvBookInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Цитаты: 0"
+        android:textSize="12sp"
+        android:textColor="@color/dark_secondary_text_color"
+        app:layout_constraintTop_toBottomOf="@id/tvBookDetails"
+        app:layout_constraintStart_toStartOf="@id/tvBookDetails"
+        android:layout_marginTop="4dp" />
+
+    <!-- Галочка "Прочитано" -->
+    <CheckBox
+        android:id="@+id/cbMarkAsRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/dark_button_color"
+        android:visibility="gone"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Разделитель -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_accent"
+        app:layout_constraintTop_toBottomOf="@id/tvBookInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

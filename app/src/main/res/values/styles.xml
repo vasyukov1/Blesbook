@@ -1,0 +1,19 @@
+<resources>
+    <style name="Theme.MyApp.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary_dark</item>
+        <item name="colorAccent">@color/dark_accent</item>
+
+        <item name="android:textColorPrimary">@color/dark_text_color</item>
+        <item name="android:textColorSecondary">@color/dark_secondary_text_color</item>
+
+        <item name="android:windowBackground">@color/dark_window_background</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+
+        <item name="colorControlNormal">@color/dark_control_normal</item>
+        <item name="colorControlActivated">@color/dark_control_activated</item>
+
+        <item name="android:statusBarColor">@color/dark_status_bar_color</item>
+        <item name="android:navigationBarColor">@color/dark_navigation_bar_color</item>
+    </style>
+</resources>

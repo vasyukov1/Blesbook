@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Редактировать цитату"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_text_color"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Поле ввода цитаты -->
+    <EditText
+        android:id="@+id/etQuote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите цитату"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/dark_text_color"
+        android:textColorHint="@color/dark_secondary_text_color"
+        android:padding="8dp"/>
+</LinearLayout>

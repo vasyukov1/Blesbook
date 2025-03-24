@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Заголовок -->
+            <TextView
+                android:id="@+id/tvNewBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Новая книга"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_text_color"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Название книги -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBookTitle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="Название книги"
+                app:cursorColor="@color/dark_accent"
+                app:hintTextColor="@color/dark_text_color"
+                android:textColorHint="@color/dark_secondary_text_color"
+                app:boxStrokeColor="@drawable/box_stroke_color"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBookTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_text_color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Автор -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBookAuthor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="Автор"
+                app:cursorColor="@color/dark_accent"
+                app:hintTextColor="@color/dark_text_color"
+                android:textColorHint="@color/dark_secondary_text_color"
+                app:boxStrokeColor="@drawable/box_stroke_color"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBookAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_text_color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Страна -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBookCountry"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="Страна"
+                app:cursorColor="@color/dark_accent"
+                app:hintTextColor="@color/dark_text_color"
+                android:textColorHint="@color/dark_secondary_text_color"
+                app:boxStrokeColor="@drawable/box_stroke_color"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBookCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_text_color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Год -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBookYear"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="Год"
+                app:cursorColor="@color/dark_accent"
+                app:hintTextColor="@color/dark_text_color"
+                android:textColorHint="@color/dark_secondary_text_color"
+                app:boxStrokeColor="@drawable/box_stroke_color"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBookYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textColor="@color/dark_text_color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Выбор статуса книги -->
+            <RadioGroup
+                android:id="@+id/rgBookStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Прочитано"
+                    android:textColor="@color/dark_text_color"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rbWishlist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wishlist"
+                    android:textColor="@color/dark_text_color"
+                    android:layout_marginLeft="16dp"/>
+            </RadioGroup>
+
+            <!-- Кнопка сохранения -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Сохранить"
+                android:textColor="@color/dark_button_text_color"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/dark_accent"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Нижняя панель навигации -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bottom_nav_bg"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color"
+        app:menu="@menu/bottom_navigation_menu"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Верхний контейнер -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Заголовок -->
+            <TextView
+                android:id="@+id/tvSearchBookAndAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Поиск"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_text_color"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <!-- Поисковая строка -->
+                <EditText
+                    android:id="@+id/etSearchQuery"
+                    android:layout_width="240dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/search_line"
+                    android:hint="Введите книгу или автора"
+                    android:inputType="text"
+                    android:textColor="@color/dark_primary_dark"
+                    android:textColorHint="@color/dark_secondary_text_color"
+                    android:textSize="16sp"
+                    android:padding="4dp"
+                    android:layout_marginEnd="4dp"/>
+
+                <!-- Найти -->
+                <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/dark_accent"
+                    android:text="Найти"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_button_text_color"
+                    app:cornerRadius="8dp" />
+            </LinearLayout>
+
+            <!-- Фильтры поиска -->
+            <RadioGroup
+                android:id="@+id/rgSearchFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Все"
+                    android:textColor="@color/dark_secondary_text_color"
+                    android:checked="true"
+                    android:layout_marginEnd="50dp"/>
+
+                <RadioButton
+                    android:id="@+id/rbTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_secondary_text_color"
+                    android:text="Книга"
+                    android:layout_marginEnd="50dp"/>
+
+                <RadioButton
+                    android:id="@+id/rbAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_secondary_text_color"
+                    android:text="Автор" />
+            </RadioGroup>
+
+            <!-- Список результатов -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Сообщение, если результаты не найдены -->
+            <TextView
+                android:id="@+id/tvNoResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Книги не найдены"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Нижняя панель навигации -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bottom_nav_bg"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color"
+        app:menu="@menu/bottom_navigation_menu"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
