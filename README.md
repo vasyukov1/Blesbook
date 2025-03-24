@@ -8,6 +8,8 @@ Author: Alexander Vasyukov
 
 This project is an Android app for managing of books and quotes, written in Kotlin.
 
+![screens](screens.png)
+
 ### Home
 
 - User Information: First name, last name, number of books read, and number of books in the wishlist
@@ -62,7 +64,7 @@ This screen contains a search bar where users can input a quote. The results are
 
 Similar to the Find Quote screen, but for searching books and authors. Users can search within books, authors, or both.
 
-![photo](first_design.jpg)
+![first_design](first_design.jpg)
 
 ## For the Future
 
