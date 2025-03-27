@@ -48,7 +48,7 @@
                     android:id="@+id/etBookTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textCapSentences"
                     android:maxLines="1"
                     android:textColor="@color/dark_text_color"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,7 @@
                     android:id="@+id/etBookAuthor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textCapSentences"
                     android:maxLines="1"
                     android:textColor="@color/dark_text_color"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -94,7 +94,7 @@
                     android:id="@+id/etBookCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textCapSentences"
                     android:maxLines="1"
                     android:textColor="@color/dark_text_color"/>
             </com.google.android.material.textfield.TextInputLayout>

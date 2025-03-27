@@ -13,6 +13,7 @@ import com.google.gson.reflect.TypeToken
 import com.vasyukov.bookapp.Book
 import com.vasyukov.bookapp.NewsItem
 import com.vasyukov.bookapp.R
+import androidx.core.content.edit
 
 class EditBookActivity : AppCompatActivity() {
 
@@ -109,6 +110,17 @@ class EditBookActivity : AppCompatActivity() {
         val selectedRadioButtonId = rgBookList.checkedRadioButtonId
         val isWishlist = selectedRadioButtonId == R.id.rbWishlist
 
+        // Обновление списка
+        val sharedPreferences = getSharedPreferences("BookData", MODE_PRIVATE)
+        val json = sharedPreferences.getString("books", "[]")
+        val type = object : TypeToken<MutableList<Book>>() {}.type
+        val bookList = Gson().fromJson<MutableList<Book>>(json, type)
+
+        val originalBook = bookList.find { it.title == book.title && it.author == book.author && it.country == book.country && it.year == book.year }
+        if (originalBook != null) {
+            bookList.remove(originalBook)
+        }
+
         book.title = title
         book.author = author
         book.country = country
@@ -116,21 +128,12 @@ class EditBookActivity : AppCompatActivity() {
         book.isWishlist = isWishlist
         book.isRead = !isWishlist
 
-        // Обновление списка
-        val sharedPreferences = getSharedPreferences("BookData", MODE_PRIVATE)
-        val json = sharedPreferences.getString("books", "[]")
-        val type = object : TypeToken<MutableList<Book>>() {}.type
-        val bookList = Gson().fromJson<MutableList<Book>>(json, type)
+        bookList.add(book)
 
-        if (position != -1) {
-            bookList[position] = book
-        } else {
-            bookList.add(book)
+        sharedPreferences.edit {
+            putString("books", Gson().toJson(bookList))
         }
-
-        val editor = sharedPreferences.edit()
-        editor.putString("books", Gson().toJson(bookList))
-        editor.apply()
+        Toast.makeText(this, "Книга изменена", Toast.LENGTH_SHORT).show()
 
         val newsItem = NewsItem(
             type = "book_edited",
@@ -139,8 +142,6 @@ class EditBookActivity : AppCompatActivity() {
             timestamp = System.currentTimeMillis()
         )
         addNewsItem(newsItem)
-
-        Toast.makeText(this, "Книга изменена", Toast.LENGTH_SHORT).show()
 
         if (book.isWishlist) {
             startActivity(Intent(this, WishlistActivity::class.java))
@@ -159,8 +160,8 @@ class EditBookActivity : AppCompatActivity() {
         val newsList = Gson().fromJson<MutableList<NewsItem>>(json, type)
         newsList.add(newsItem)
 
-        val editor = sharedPreferences.edit()
-        editor.putString("news", Gson().toJson(newsList))
-        editor.apply()
+        sharedPreferences.edit {
+            putString("news", Gson().toJson(newsList))
+        }
     }
 }

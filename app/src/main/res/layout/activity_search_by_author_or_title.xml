@@ -125,6 +125,7 @@
         android:background="@color/bottom_nav_bg"
         app:itemIconTint="@color/bottom_nav_icon_tint"
         app:itemTextColor="@color/bottom_nav_text_color"
-        app:menu="@menu/bottom_navigation_menu"/>
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

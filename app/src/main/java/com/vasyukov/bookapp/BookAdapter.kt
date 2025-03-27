@@ -16,11 +16,12 @@ import com.vasyukov.bookapp.activities.BookDetailsActivity
 import com.vasyukov.bookapp.activities.BookListActivity
 import com.vasyukov.bookapp.activities.EditBookActivity
 import com.vasyukov.bookapp.activities.WishlistActivity
+import androidx.core.content.edit
 
 class BookAdapter(
     private var bookList: MutableList<Book>,
     private val context: Context,
-    private val isWishlist: Boolean = false
+    private val isWishlist: Boolean = false,
 ) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -124,6 +125,8 @@ class BookAdapter(
         // Уведомление адаптера об изменении книги
         notifyItemChanged(position)
 
+        Toast.makeText(context, "Книга перемещена в список прочитанных", Toast.LENGTH_SHORT).show()
+
         // Создание новости
         val newsItem = NewsItem(
             type = "book_read",
@@ -148,8 +151,7 @@ class BookAdapter(
             (context as? WishlistActivity)?.loadWishlist()
             (context as? BookListActivity)?.loadBooks()
         }
-
-        Toast.makeText(context, "Книга перемещена в список прочитанных", Toast.LENGTH_SHORT).show()    }
+    }
 
     // Открытие экрана "О книге"
     private fun openBookDetails(book: Book) {
@@ -184,6 +186,25 @@ class BookAdapter(
         editor.apply()
 
         Toast.makeText(context, "Книга удалена", Toast.LENGTH_SHORT).show()
+
+        // Создание новости
+        val newsItem = NewsItem(
+            type = "book_deleted",
+            bookTitle = book.title,
+            bookAuthor = book.author,
+            timestamp = System.currentTimeMillis()
+        )
+
+        // Сохранение новости
+        val sharedPreferencesNews = context.getSharedPreferences("NewsFeed", Context.MODE_PRIVATE)
+        val jsonNews = sharedPreferencesNews.getString("news", "[]")
+        val typeNews = object : TypeToken<MutableList<NewsItem>>() {}.type
+        val newsList = Gson().fromJson<MutableList<NewsItem>>(jsonNews, typeNews)
+        newsList.add(newsItem)
+
+        sharedPreferencesNews.edit {
+            putString("news", Gson().toJson(newsList))
+        }
     }
 
     // Обновление списка книг

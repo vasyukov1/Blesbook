@@ -45,8 +45,12 @@
         <activity android:name=".activities.EditBookActivity" />
         <activity android:name=".activities.BookDetailsActivity" />
         <activity android:name=".activities.FullscreenPhotoActivity" />
-        <activity android:name=".activities.SearchByQuoteActivity" />
-        <activity android:name=".activities.SearchByAuthorOrTitleActivity" />
+        <activity
+            android:name=".activities.SearchByQuoteActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activities.SearchByAuthorOrTitleActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

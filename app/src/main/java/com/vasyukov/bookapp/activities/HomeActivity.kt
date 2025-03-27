@@ -45,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
 
         rvNewsFeed = findViewById(R.id.rvNewsFeed)
         rvNewsFeed.layoutManager = LinearLayoutManager(this)
-        newsAdapter = NewsAdapter(emptyList())
+        newsAdapter = NewsAdapter(this, emptyList())
         rvNewsFeed.adapter = newsAdapter
 
         // Загрузка данных
@@ -139,8 +139,9 @@ class HomeActivity : AppCompatActivity() {
         val json = sharedPreferences.getString("news", "[]")
         val type = object : TypeToken<List<NewsItem>>() {}.type
         val newsList = Gson().fromJson<List<NewsItem>>(json, type)
+        val reversedNewsList = newsList.reversed()
 
-        newsAdapter = NewsAdapter(newsList)
+        newsAdapter = NewsAdapter(this, reversedNewsList)
         rvNewsFeed.adapter = newsAdapter
     }
 }

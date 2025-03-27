@@ -1,6 +1,7 @@
 package com.vasyukov.bookapp.activities
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,11 +10,13 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.core.content.edit
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.vasyukov.bookapp.Book
 import com.vasyukov.bookapp.BookUtils
+import com.vasyukov.bookapp.NewsItem
 import com.vasyukov.bookapp.R
 import java.io.File
 
@@ -179,6 +182,24 @@ class EditProfileActivity : AppCompatActivity() {
 
             loadUserData()
             Toast.makeText(this, "Книги успешно импортированы", Toast.LENGTH_SHORT).show()
+
+            // Создание новости
+            val newsItem = NewsItem(
+                type = "books_imported",
+                timestamp = System.currentTimeMillis()
+            )
+
+            // Сохранение новости
+            val sharedPreferencesNews = this.getSharedPreferences("NewsFeed", MODE_PRIVATE)
+            val jsonNews = sharedPreferencesNews.getString("news", "[]")
+            val typeNews = object : TypeToken<MutableList<NewsItem>>() {}.type
+            val newsList = Gson().fromJson<MutableList<NewsItem>>(jsonNews, typeNews)
+            newsList.add(newsItem)
+
+            sharedPreferencesNews.edit {
+                putString("news", Gson().toJson(newsList))
+            }
+
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, "Ошибка при импорте данных", Toast.LENGTH_SHORT).show()
